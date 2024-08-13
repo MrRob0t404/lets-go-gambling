@@ -1,0 +1,37 @@
+/* client/src/components/styles/Result.css */
+
+.result-container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.result-message {
+  margin-top: 15px;
+}
+
+.dice-roll {
+  font-weight: bold;
+  font-size: 24px;
+  color: #ff9800;
+}
+
+.win {
+  color: green;
+  font-weight: bold;
+}
+
+.lose {
+  color: red;
+  font-weight: bold;
+}
+
+.balance {
+  font-size: 20px;
+  color: #333;
+  font-weight: bold;
+}

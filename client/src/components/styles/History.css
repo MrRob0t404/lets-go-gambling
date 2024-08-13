@@ -1,0 +1,67 @@
+/* client/src/components/styles/History.css */
+
+.history-container {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+.history-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+.history-button:hover {
+  background-color: #45a049;
+}
+
+.loading-message,
+.error-message {
+  text-align: center;
+  margin-top: 10px;
+  color: red;
+  font-weight: bold;
+}
+
+.history-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.history-item {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.history-item:last-child {
+  border-bottom: none;
+}
+
+.entry-date {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.win {
+  color: green;
+  font-weight: bold;
+}
+
+.lose {
+  color: red;
+  font-weight: bold;
+}

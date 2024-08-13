@@ -1,0 +1,63 @@
+#loading-message {
+  color: red;
+  border: 8px solid gray;
+  border-radius: 8px;
+  width: 8%;
+  max-width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.bet-form-container {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  margin: auto;
+}
+
+.bet-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.bet-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.bet-button:disabled {
+  background-color: #9e9e9e;
+  cursor: not-allowed;
+}
+
+.message {
+  color: red;
+  margin-top: 15px;
+  text-align: center;
+  font-weight: bold;
+}
