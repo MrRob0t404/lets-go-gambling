@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "## Project Description Create a full stack application with a permanent data storage layer using:",
   "main": "index.js",
+  "workspaces": [
+    "client",
+    "server"
+  ],
   "scripts": {
     "start:client": "cd client && npm start",
     "start:server": "cd server && npm start",
@@ -12,7 +16,7 @@
     "start-dev": "concurrently \"npm run start:client-dev\" \"npm run start:server-dev\""
   },
   "keywords": [],
-  "author": "",
+  "author": "Simon Gaviria :D",
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^8.2.2"
