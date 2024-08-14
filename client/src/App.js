@@ -15,6 +15,8 @@ function App() {
   });
   const [withdrawMessage, setWithdrawMessage] = useState("");
   const [gameOver, setGameOverState] = useState(false);
+  const [buttonPosition, setButtonPosition] = useState({ top: 200, left: 200 });
+  const [isMoving, setIsMoving] = useState(false); // Track if the button is moving
 
   const fetchHistory = async () => {
     try {
@@ -71,6 +73,7 @@ function App() {
       });
       setGameOverState(false);
       setWithdrawMessage("");
+      setIsMoving(false); // Reset movement state
     } catch (error) {
       console.error("Failed to reset", error);
     }
@@ -92,7 +95,7 @@ function App() {
           balance: 0,
           diceRoll: null,
           result: null,
-          history: [], // Reset history after withdrawal
+          history: [],
         });
         setGameOverState(true);
         setWithdrawMessage("Successfully withdrew your winnings.");
@@ -106,8 +109,48 @@ function App() {
     }
   };
 
+  const handleMouseMove = (event) => {
+    if (gameState.balance > 10000) {
+      if (!isMoving) return; // Prevent movement until the mouse gets close
+
+      const buttonElement = document.getElementById("withdrawButton");
+      if (buttonElement) {
+        const rect = buttonElement.getBoundingClientRect();
+        const distance = 100; // Distance threshold from the cursor
+
+        const dx = rect.left - event.clientX;
+        const dy = rect.top - event.clientY;
+        const distanceFromCursor = Math.sqrt(dx * dx + dy * dy);
+
+        if (distanceFromCursor < distance) {
+          const newLeft = buttonPosition.left + (dx / distanceFromCursor) * 30;
+          const newTop = buttonPosition.top + (dy / distanceFromCursor) * 30;
+
+          setButtonPosition({
+            top: Math.min(
+              Math.max(newTop, 0),
+              window.innerHeight - rect.height
+            ),
+            left: Math.min(
+              Math.max(newLeft, 0),
+              window.innerWidth - rect.width
+            ),
+          });
+        }
+      }
+    }
+  };
+
+  const handleMouseEnterButton = () => {
+    setIsMoving(true); // Start moving when the mouse gets close
+  };
+
   return (
-    <div id="main">
+    <div
+      id="main"
+      onMouseMove={handleMouseMove}
+      style={{ position: "relative", height: "100vh" }}
+    >
       <h1>Gomboc Gambling Casino</h1>
       <BetForm onUpdate={updateGameState} balance={gameState.balance} />
       <Result
@@ -115,9 +158,21 @@ function App() {
         diceRoll={gameState.diceRoll}
         result={gameState.result}
       />
-      <History history={gameState.history} /> {/* Pass history as prop */}
+      <History history={gameState.history} />
       {gameOver || gameState.balance <= 0 ? null : (
-        <button onClick={handleWithdraw}>Withdraw</button>
+        <button
+          id="withdrawButton"
+          onClick={handleWithdraw}
+          onMouseEnter={handleMouseEnterButton} // Start moving only when the mouse gets close
+          style={{
+            position: "absolute",
+            top: `${buttonPosition.top}px`,
+            left: `${buttonPosition.left}px`,
+            transition: "top 0.2s ease, left 0.2s ease", // Smooth transition for movement
+          }}
+        >
+          Withdraw
+        </button>
       )}
       <p>{withdrawMessage}</p>
       <button onClick={handleReset}>RESET</button>
