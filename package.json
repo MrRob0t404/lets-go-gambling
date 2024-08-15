@@ -13,12 +13,17 @@
     "start:client-dev": "cd client && npm start dev",
     "start:server-dev": "cd server && npm run dev",
     "start": "concurrently \"npm run start:client\" \"npm run start:server\"",
-    "start-dev": "concurrently \"npm run start:client-dev\" \"npm run start:server-dev\""
+    "start-dev": "concurrently \"npm run start:client-dev\" \"npm run start:server-dev\"",
+    "lint": "npx eslint ./client/src/ && npx eslint ./server"
   },
   "keywords": [],
   "author": "Simon Gaviria :D",
   "license": "ISC",
   "devDependencies": {
-    "concurrently": "^8.2.2"
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "concurrently": "^8.2.2",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react": "^7.35.0",
+    "eslint-plugin-react-hooks": "^4.6.2"
   }
 }
