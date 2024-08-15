@@ -87,18 +87,18 @@ function App() {
 
     try {
       if (hasWinningBet) {
-        const response = await axios.post(
-          "http://localhost:5001/api/withdraw",
-          {}
-        );
-        setGameState({
-          balance: 0,
-          diceRoll: null,
-          result: null,
-          history: [],
-        });
-        setGameOverState(true);
-        setWithdrawMessage("Successfully withdrew your winnings.");
+        await axios
+          .post("http://localhost:5001/api/withdraw", {})
+          .then((res) => {
+            setGameState({
+              balance: 0,
+              diceRoll: null,
+              result: null,
+              history: [],
+            });
+            setGameOverState(true);
+            setWithdrawMessage("Successfully withdrew your winnings.");
+          });
       } else {
         setWithdrawMessage(
           "You must win at least one game before withdrawing."
