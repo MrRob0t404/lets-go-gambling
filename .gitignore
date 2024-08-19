@@ -87,3 +87,6 @@ coverage/
 *.tar.gz
 *.rar
 *.7z
+
+# Local Netlify folder
+.netlify

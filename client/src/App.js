@@ -20,7 +20,7 @@ function App() {
 
   const fetchHistory = async () => {
     try {
-      const response = await axios.get("https://dice-gambling.netlify.app/api/history");
+      const response = await axios.get("https://dice-gambling.netlify.app/api/hisotry");
       if (response.data) {
         setGameState((prevState) => ({
           ...prevState,
